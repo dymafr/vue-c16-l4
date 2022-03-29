@@ -66,7 +66,7 @@ li {
 .v-move,
 .v-enter-active {
   transition: all 1s;
-  transition-delay: calc(var(--i) * 0.2);
+  transition-delay: calc(var(--i) * 1s);
 }
 
 .v-leave-to {
