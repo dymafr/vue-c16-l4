@@ -1,37 +1,32 @@
 <template>
   <div class="p-20">
     <div class="mb-20 d-flex w100 justify-content-center align-items-center">
-      <Transition name="fadeCircle" mode="out-in">
-        <button
-          v-if="selectedComponent === 'B'"
-          class="btn btn-primary mr-20"
-          @click="selectedComponent = 'A'"
-        >
-          Composant A
-        </button>
-        <button v-else class="btn btn-primary" @click="selectedComponent = 'B'">
-          Composant B
-        </button>
-      </Transition>
+      <input
+        v-model="input"
+        @keydown.enter="addItem"
+        type="text"
+        class="flex-fill mr-20"
+      />
+      <button class="btn btn-primary mr-20" @click="addItem">Ajouter</button>
     </div>
-    <Transition name="fadeRight" mode="out-in">
-      <Component :is="components[selectedComponent]" />
-    </Transition>
+    <div>
+      <ul>
+        <li class="w-100 card mb-10" v-for="item in items">{{ item }}</li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import type { Component as C } from 'vue';
-import A from './A.vue';
-import B from './B.vue';
 
-const components: { [s: string]: C } = {
-  A,
-  B,
-};
+const input = ref('');
+const items = ref<string[]>(['Pomme', 'Fraise', 'Poire']);
 
-const selectedComponent = ref('A');
+function addItem() {
+  items.value.push(input.value);
+  input.value = '';
+}
 </script>
 
 <style lang="scss">
@@ -49,21 +44,6 @@ const selectedComponent = ref('A');
 
 .fadeRight-enter-from {
   transform: translateX(-10px);
-  opacity: 0;
-}
-
-.fadeCircle-leave-to {
-  transform: translateX(30px) rotateY(180deg);
-  opacity: 0;
-}
-
-.fadeCircle-enter-active,
-.fadeCircle-leave-active {
-  transition: all 0.4s;
-}
-
-.fadeCircle-enter-from {
-  transform: translateX(-30px) rotateY(-180deg);
   opacity: 0;
 }
 </style>
