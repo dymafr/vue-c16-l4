@@ -32,18 +32,12 @@ function addItem() {
 <style lang="scss">
 @import './assets/scss/base.scss';
 
-.fadeRight-leave-to {
-  transform: translateX(10px);
+.v-enter-from {
+  transform: translateX(30px);
   opacity: 0;
 }
 
-.fadeRight-enter-active,
-.fadeRight-leave-active {
-  transition: all 0.4s;
-}
-
-.fadeRight-enter-from {
-  transform: translateX(-10px);
-  opacity: 0;
+.v-enter-active {
+  transition: all 1s;
 }
 </style>
