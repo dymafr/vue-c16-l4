@@ -12,6 +12,7 @@
     <div class="container">
       <TransitionGroup tag="ul">
         <li
+          :style="`--i:${index}`"
           class="w-100 card mb-10"
           v-for="(item, index) in items"
           @click="removeItem(index)"
@@ -65,6 +66,7 @@ li {
 .v-move,
 .v-enter-active {
   transition: all 1s;
+  transition-delay: calc(var(--i) * 0.2);
 }
 
 .v-leave-to {
