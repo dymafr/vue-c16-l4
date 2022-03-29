@@ -10,9 +10,9 @@
       <button class="btn btn-primary mr-20" @click="addItem">Ajouter</button>
     </div>
     <div>
-      <ul>
+      <TransitionGroup tag="ul">
         <li class="w-100 card mb-10" v-for="item in items">{{ item }}</li>
-      </ul>
+      </TransitionGroup>
     </div>
   </div>
 </template>
