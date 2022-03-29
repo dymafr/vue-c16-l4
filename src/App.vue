@@ -9,7 +9,7 @@
       />
       <button class="btn btn-primary mr-20" @click="addItem">Ajouter</button>
     </div>
-    <div>
+    <div class="container">
       <TransitionGroup tag="ul">
         <li
           class="w-100 card mb-10"
@@ -47,12 +47,22 @@ li {
   cursor: pointer;
 }
 
+.container {
+  position: relative;
+}
+
 .v-enter-from {
   transform: translateX(-10px);
   opacity: 0;
 }
 
-.v-leave-active,
+.v-leave-active {
+  width: 100%;
+  transition: all 1s;
+  position: absolute;
+}
+
+.v-move,
 .v-enter-active {
   transition: all 1s;
 }
