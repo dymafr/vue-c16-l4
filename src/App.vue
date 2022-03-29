@@ -15,6 +15,7 @@
           class="w-100 card mb-10"
           v-for="(item, index) in items"
           @click="removeItem(index)"
+          :key="item"
         >
           {{ item }}
         </li>
@@ -47,11 +48,17 @@ li {
 }
 
 .v-enter-from {
-  transform: translateX(30px);
+  transform: translateX(-10px);
   opacity: 0;
 }
 
+.v-leave-active,
 .v-enter-active {
   transition: all 1s;
+}
+
+.v-leave-to {
+  transform: translateX(10px);
+  opacity: 0;
 }
 </style>
