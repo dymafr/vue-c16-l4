@@ -11,7 +11,13 @@
     </div>
     <div>
       <TransitionGroup tag="ul">
-        <li class="w-100 card mb-10" v-for="item in items">{{ item }}</li>
+        <li
+          class="w-100 card mb-10"
+          v-for="(item, index) in items"
+          @click="removeItem(index)"
+        >
+          {{ item }}
+        </li>
       </TransitionGroup>
     </div>
   </div>
@@ -27,10 +33,18 @@ function addItem() {
   items.value.push(input.value);
   input.value = '';
 }
+
+function removeItem(index: number) {
+  items.value.splice(index, 1);
+}
 </script>
 
 <style lang="scss">
 @import './assets/scss/base.scss';
+
+li {
+  cursor: pointer;
+}
 
 .v-enter-from {
   transform: translateX(30px);
